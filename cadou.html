@@ -57,17 +57,10 @@
 
   <script>
     function checkMidnightRomania() {
-      const nowUTC = new Date();
-      const romaniaHour = nowUTC.getUTCHours() + 3; // UTC+3 pentru România
-      const minutes = nowUTC.getUTCMinutes();
-
-      if (romaniaHour === 0 && minutes === 0) {
-        document.getElementById("wait").style.display = "none";
-        document.getElementById("message").style.display = "block";
-      } else {
-        document.getElementById("wait").style.display = "block";
-      }
-    }
+  // Pentru test: arată mesajul direct, fără să aștepte miezul nopții
+  document.getElementById("wait").style.display = "none";
+  document.getElementById("message").style.display = "block";
+}
 
     function showGiftBox() {
       document.getElementById("message").style.display = "none";
