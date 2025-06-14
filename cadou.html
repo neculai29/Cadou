@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Surpriză de la miezul nopții</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f0f8ff;
+    }
+
+    #message, #gift-box, #gift-reveal {
+      display: none;
+    }
+
+    #gift-box {
+      font-size: 50px;
+      cursor: pointer;
+    }
+
+    #gift-reveal {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #d2691e;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="wait">
+    <h2>Așteaptă până la miezul nopții pentru o surpriză!</h2>
+  </div>
+
+  <div id="message">
+    <h1>🎉 Surpriză! 🎉</h1>
+    <p>Ai fost suficient de răbdător!</p>
+    <button onclick="showGiftBox()">Vreau cadoul!</button>
+  </div>
+
+  <div id="gift-box" onclick="revealGift()">
+    🎁
+  </div>
+
+  <div id="gift-reveal">
+    <h2>✨ Felicitări! Ai primit un cadou special! ✨</h2>
+    <img src="https://media.giphy.com/media/3o6Zt6ML6BklcajjsA/giphy.gif" alt="Cadou" width="300">
+  </div>
+
+  <script>
+    function checkMidnightRomania() {
+      const nowUTC = new Date();
+      const romaniaHour = nowUTC.getUTCHours() + 3; // UTC+3 pentru România
+      const minutes = nowUTC.getUTCMinutes();
+
+      if (romaniaHour === 0 && minutes === 0) {
+        document.getElementById("wait").style.display = "none";
+        document.getElementById("message").style.display = "block";
+      } else {
+        document.getElementById("wait").style.display = "block";
+      }
+    }
+
+    function showGiftBox() {
+      document.getElementById("message").style.display = "none";
+      document.getElementById("gift-box").style.display = "block";
+    }
+
+    function revealGift() {
+      document.getElementById("gift-box").style.display = "none";
+      document.getElementById("gift-reveal").style.display = "block";
+    }
+
+    // Verifică ora la fiecare 10 secunde
+    setInterval(checkMidnightRomania, 10000);
+    checkMidnightRomania(); // apel inițial
+  </script>
+
+</body>
+</html>
